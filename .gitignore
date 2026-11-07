@@ -1,0 +1,20 @@
+# Dataset files (too large for GitHub)
+Dry_Bean_Dataset.csv
+DryBeanDataset/
+
+# Assignment PDF
+*.pdf
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
