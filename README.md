@@ -55,7 +55,7 @@ This is a **multi-class classification problem** with 7 classes and 16 numerical
 
 **GitHub Repository:** [https://github.com/harsav360/ml-assignment2-drybean-classification](https://github.com/harsav360/ml-assignment2-drybean-classification)
 
-**Live Streamlit App:** [Add your Streamlit Cloud link here after deployment]
+**Live Streamlit App:** [https://ml-assignment2-drybean-classification-hizrd6pch2mh4suzlsfsxu.streamlit.app/](https://ml-assignment2-drybean-classification-hizrd6pch2mh4suzlsfsxu.streamlit.app/)
 
 ### Repository Structure
 
