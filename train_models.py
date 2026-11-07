@@ -201,12 +201,27 @@ def main():
 
     # Check if dataset exists
     if not os.path.exists(csv_path):
-        print(f"ERROR: Dataset not found at {csv_path}")
-        print("Please download the Dry Bean Dataset from:")
-        print("  https://archive.ics.uci.edu/dataset/602/dry+bean+dataset")
-        print("  OR from Kaggle: https://www.kaggle.com/datasets/muratkokludataset/dry-bean-dataset")
-        print(f"Place the CSV file as: {csv_path}")
-        return
+        # Auto-download from UCI if not found locally
+        print("Dry_Bean_Dataset.csv not found locally. Downloading from UCI Repository...")
+        try:
+            import urllib.request, zipfile
+            zip_tmp = os.path.join(base_dir, 'dry_bean_temp.zip')
+            url = 'https://archive.ics.uci.edu/static/public/602/dry+bean+dataset.zip'
+            urllib.request.urlretrieve(url, zip_tmp)
+            with zipfile.ZipFile(zip_tmp, 'r') as z:
+                z.extractall(base_dir)
+            if os.path.exists(zip_tmp):
+                os.remove(zip_tmp)
+            xlsx_p = os.path.join(base_dir, 'DryBeanDataset', 'Dry_Bean_Dataset.xlsx')
+            if os.path.exists(xlsx_p):
+                df_temp = pd.read_excel(xlsx_p)
+                df_temp.to_csv(csv_path, index=False)
+                print(f"Dataset successfully downloaded and converted to CSV ({len(df_temp)} rows)")
+        except Exception as e:
+            print(f"Automatic download failed: {e}")
+            print(f"Please place Dry_Bean_Dataset.csv at {csv_path}")
+            return
+
 
     print("=" * 60)
     print("Dry Bean Dataset - Multi-Class Classification")
